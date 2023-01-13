@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, TextInput, Button } from "react-native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = ({navigation}) => {
-
+const [email,setEmail]=useState()
+const [password,setPassword]=useState()
 const auth = getAuth();
-signInWithEmailAndPassword(auth, email, password)
+
+const loginUser=()=>{
+  signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
@@ -17,33 +20,30 @@ signInWithEmailAndPassword(auth, email, password)
     const errorCode = error.code;
     const errorMessage = error.message;
   });
+}
 
-  const [text, onChangeText] = React.useState(null);
+
+  // const [text, onChangeText] = React.useState(null);
 //   const [number, onChangeNumber] = React.useState(null);
 
   return (
     <SafeAreaView>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={text=>setEmail(text)}
+        value={email}
         placeholder="Email Address"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={text}
+        onChangeText={text=>setPassword(text)}
+        value={password}
         placeholder="Password"
       />
-
-      <Button
+       <Button
         title="Login"
-        onPress={() => Alert.alert('Simple Button pressed')}
-      />
-    {/* <Button
-        title="Go to Details... again"
-        onPress={() => navigation.navigate('Register')}
-      /> */}
+        onPress={loginUser}
+      /> 
 
     </SafeAreaView>
   );

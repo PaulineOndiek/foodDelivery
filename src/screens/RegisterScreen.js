@@ -7,6 +7,7 @@ const RegisterScreen=({navigation})=>{
     const [name,setName]=useState("")
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const [phone,setPhone]=useState("")
   
   const registerUser=()=>{
     // const auth = getAuth();
@@ -36,7 +37,11 @@ const RegisterScreen=({navigation})=>{
          value={name}
          placeholder="Username"
        />
-
+        <TextInput 
+        style={styles.input}
+        value={phone}
+        placeholder="Phone Number"/>
+        
        <TextInput
        style={styles.input}
        onChangeText={text=>setEmail(text)}
