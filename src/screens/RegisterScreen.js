@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { View,Text, TextInput, TouchableOpacity, StyleSheet, Button } from "react-native";
+import { View,Text, TextInput, TouchableOpacity, StyleSheet, Button, Image } from "react-native";
 import { useState } from "react";
 import { auth } from "../Firebase"
 
@@ -31,6 +31,7 @@ const RegisterScreen=({navigation})=>{
    return(
 
     <View>
+      {/* <Image source={require("./../../assets/food.avif")} style={{width: 100, height:100}}/> */}
         <TextInput
          style={styles.input}
          onChangeText={text=>setName(text)}
