@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { View,Text, TextInput, TouchableOpacity, StyleSheet, Button, Image } from "react-native";
 import { useState } from "react";
 import { auth } from "../Firebase"
@@ -62,12 +62,12 @@ const RegisterScreen=({navigation})=>{
         onPress={registerUser}
       />
         
-        {/* <TouchableOpacity
+        <TouchableOpacity
         title="Login"
         onPress={() => navigation.navigate("Login")}
-        > */}
-          {/* <Text>Register</Text>
-        </TouchableOpacity> */}
+        >
+           <Text>Login</Text>
+        </TouchableOpacity>
 
     </View>
    )

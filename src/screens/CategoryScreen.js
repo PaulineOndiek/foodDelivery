@@ -5,6 +5,7 @@ const CategoryScreen=()=>{
     return(
         <View>
             {
+                // Data.filter(()=>{function(item)})
              Data.map(Category=>{
                 return(
                     <View>

@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import { SafeAreaView, StyleSheet, TextInput, Button } from "react-native";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Firebase"
 
 const LoginScreen = ({navigation}) => {
-const [email,setEmail]=useState()
-const [password,setPassword]=useState()
-const auth = getAuth();
+const [email,setEmail]=useState("")
+const [password,setPassword]=useState("")
+// const auth = getAuth();
 
 const loginUser=()=>{
   signInWithEmailAndPassword(auth, email, password)
@@ -21,10 +22,6 @@ const loginUser=()=>{
     const errorMessage = error.message;
   });
 }
-
-
-  // const [text, onChangeText] = React.useState(null);
-//   const [number, onChangeNumber] = React.useState(null);
 
   return (
     <SafeAreaView>
