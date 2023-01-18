@@ -3,16 +3,21 @@ import { Button, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, Fl
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Data } from '../Data';
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
+import Item from '../components/Item';
+
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: 'space-around',
     // width:"100%",
   },
   category: {
-    flexDirection: "column",
+    flex:1,
+    justifyContent:"center",
+    // flexDirection: "column",
     alignItems: "center",
   },
   images: {
@@ -22,28 +27,20 @@ const styles = StyleSheet.create({
   }
 })
 
-function Item(props) {
-  return (
-    <View style={styles.item}>
-      <Text>{props.item.id}: {props.item.Name} ({props.item.Category})</Text>
-    </View>
-  );
-}
-
-
 const HomeScreen = ({ navigation }) => {
   const [fullData, setFullData] = useState(Data)
-  const [status, setStatus] = useState("NONE")
+  const [selectedCategory, setSelectedCategory] = useState("NONE")
 
- const filteredList= useEffect(() => {
-    if (status === "NONE") return fullData
-    return fullData.filter(item => status === item.Category)
-  },[fullData, status])
+  const filteredList=React.useMemo(() => {
+    if (selectedCategory === "NONE") return fullData
 
-  const onClick = (statu) => {
-    console.log("nnnnnnnnnnnnn")
-    setStatus(status)
-    console.log(status)
+    return fullData.filter(item => selectedCategory === item.Category)
+  },[fullData, selectedCategory])
+
+  const onClick = (cat) => {
+    setSelectedCategory(cat)
+    console.log(selectedCategory)
+    // console.log(filteredList)
 
   }
   return (
@@ -51,16 +48,17 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.container}>
 
         <View style={styles.category}>
-          <TouchableOpacity onPress={() =>  onClick("Beverages")}>
+          <TouchableOpacity onPress={()=> onClick(navigation.navigate("Category"),{Category:"Burgers"})}>
             <Image
               style={styles.images}
               source={require("./../../assets/burgers.jpeg")} />
             <Text>Burger</Text>
+            {/* <Text>{navigation.navigate("CategoryScreen")}</Text> */}
           </TouchableOpacity>
         </View>
 
         <View style={styles.category}>
-          <TouchableOpacity onPress={()=>{}}>
+          <TouchableOpacity onPress={()=>{onClick("Pizza"),{Category:""}}}>
             <Image
               style={styles.images}
               source={require("./../../assets/pizzas.jpeg")} />
@@ -69,7 +67,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.category}>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => {onClick("Fast Foods")}}>
             <Image
               style={styles.images}
               source={require("./../../assets/fastfoods.jpeg")} />
@@ -80,7 +78,7 @@ const HomeScreen = ({ navigation }) => {
 
       <View style={styles.container}>
         <View style={styles.category}>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => {onClick("Chicken")}}>
             <Image
               style={styles.images}
               source={require("./../../assets/chicken.jpeg")} />
@@ -89,7 +87,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.category}>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => {onClick("Desserts")}}>
             <Image
               style={styles.images}
               source={require("./../../assets/dessert.jpeg")} />
@@ -98,7 +96,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.category}>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => {onClick("Local Foods")}}>
             <Image
               style={styles.images}
               source={require("./../../assets/fish.jpeg")} />
@@ -116,14 +114,11 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <View>
-      <FlatList
-        style={styles.list}
-        renderItem={Item}
-        keyExtractor={(item) => item.Status}
-        data={filteredList}
-      />
-        {/* <Text>item.</Text> */}
-
+      {/* <FlatList
+      data={filteredList}
+      renderItem={Item}
+      /> */}
+    
 
       </View>
 
