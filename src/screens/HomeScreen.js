@@ -42,6 +42,8 @@ const HomeScreen = ({ navigation }) => {
     console.log(selectedCategory)
     // console.log(filteredList)
 
+    
+
   }
   return (
     <ScrollView>
@@ -114,21 +116,15 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <View>
-      {/* <FlatList
+      <FlatList
       data={filteredList}
       renderItem={Item}
-      /> */}
-    
-
+      />
       </View>
-
     </ScrollView>
 
 
   )
-
-
 }
-
 
 export default HomeScreen
