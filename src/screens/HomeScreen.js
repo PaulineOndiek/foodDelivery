@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { Button, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, FlatList } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Data } from '../Data';
 import {useState } from 'react';
-import Item from '../components/Item';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -39,18 +37,18 @@ const HomeScreen = ({ navigation }) => {
 
   const onClick = (cat) => {
     setSelectedCategory(cat)
+    navigation.navigate("Category", {items:filteredList})
     console.log(selectedCategory)
     // console.log(filteredList)
 
     
-
   }
   return (
     <ScrollView>
       <View style={styles.container}>
 
         <View style={styles.category}>
-          <TouchableOpacity onPress={()=> onClick(navigation.navigate("Category"),{Category:"Burgers"})}>
+          <TouchableOpacity onPress={()=> onClick("Burgers")}>
             <Image
               style={styles.images}
               source={require("./../../assets/burgers.jpeg")} />
@@ -116,10 +114,10 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <View>
-      <FlatList
+      {/* <FlatList
       data={filteredList}
       renderItem={Item}
-      />
+      /> */}
       </View>
     </ScrollView>
 

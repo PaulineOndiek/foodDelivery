@@ -1,15 +1,21 @@
-import { View, Image, Text} from "react-native"
+import { View, Image, Text, TouchableOpacity, Button} from "react-native"
 import { Data } from "../Data"
 const SingleItemScreen=({navigation,route})=>{
-    const {id,Name,Price,Image}=route.params
+    const {id}=route.params
     return(
         <View>
-            <Image source= {{uri:Image}}/>
-            <Text>{Name}</Text>
-            <Text>{Price}</Text>
-            <Text>{id}</Text>
-           
+            {/* <Text>{Data && Data.Name}</Text> */}
+            <Image source={{uri:(id.Image)}} style={{width:100, height:100}}/>
+            <Text>{id.Name}</Text>
+            <Text>{id.Price}</Text>    
             
+                <Button
+                title="Shop Now"
+                
+
+                />
+    
+                
         </View>
     )
 }

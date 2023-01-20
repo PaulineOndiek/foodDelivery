@@ -26,7 +26,7 @@ return(
   // <States>
   <NavigationContainer>
     
-    <Stack.Navigator initialRouteName='Initial'>
+    <Stack.Navigator initialRouteName='Home'>
     
       <Stack.Screen name="Home" component={HomeScreen}/>
       <Stack.Screen name="Register" component={RegisterScreen} />

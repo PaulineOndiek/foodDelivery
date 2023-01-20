@@ -1,38 +1,34 @@
-import { useState,useMemo } from "react"
+import { useEffect } from "react"
 import { View, Text, FlatList } from "react-native"
-import { Data } from "../Data"
-import Item from "../components/Item"
-
-import { useContext } from "react"
-
-const CategoryScreen=()=>{
-    const [allData, setAllData]=useState(Data)
-const [categorySelected, setCategorySelected]=useState("None")
-
-const filteredData=useMemo(()=>{
-    if (categorySelected==="None"){
-      return allData
-    }
-
-    else{
-    return allData.filter(item=>categorySelected===item.Category)
-
-    }
-
-},[allData, categorySelected])
 
 
+const CategoryScreen=({route})=>{
+    const { items }=route.params
+    useEffect(()=>{
 
-const onPress=(category)=>{
-    setCategorySelected(category)
-}
+        console.log(items)
+    },[])
 
     return(
         <View>
+            {items.map((jj)=>{
+                return(
+                    <View>
+                  <Text>{ jj.Name}</Text> 
+                  <Text>{ jj.Category}</Text>
+                  </View>
+                )
+            })}
+{/* 
             <FlatList 
-            data={filteredData}
-            renderItem={Item}
-            />
+            data={items}
+            renderItem={(item)=>{
+                return(
+
+                    <Text>{item.Name}</Text>
+                )
+            }}
+            /> */}
     
         </View>
     )
