@@ -3,7 +3,7 @@ import { signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { auth } from "../Firebase"
 import { useState } from "react";
 
-const NewScreen = () => {
+const NewScreen = (navigation) => {
   const [phone, setPhone] = useState("")
   const [code, setCode] = useState("")
 

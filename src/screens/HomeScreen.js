@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
     // width:"100%",
   },
   category: {
@@ -30,18 +30,20 @@ const HomeScreen = ({ navigation }) => {
   const [selectedCategory, setSelectedCategory] = useState("NONE")
 
   const filteredList=React.useMemo(() => {
-    if (selectedCategory === "NONE") return fullData
-
+    if (selectedCategory === "NONE") {
+      return fullData
+    }
+  else{
     return fullData.filter(item => selectedCategory === item.Category)
+  }
+    
   },[fullData, selectedCategory])
 
-  const onClick = (cat) => {
-    setSelectedCategory(cat)
+  const onClick = (category) => {
+    setSelectedCategory(category)
     navigation.navigate("Category", {items:filteredList})
     console.log(selectedCategory)
-    // console.log(filteredList)
-
-    
+  
   }
   return (
     <ScrollView>
@@ -53,12 +55,12 @@ const HomeScreen = ({ navigation }) => {
               style={styles.images}
               source={require("./../../assets/burgers.jpeg")} />
             <Text>Burger</Text>
-            {/* <Text>{navigation.navigate("CategoryScreen")}</Text> */}
+            
           </TouchableOpacity>
         </View>
 
         <View style={styles.category}>
-          <TouchableOpacity onPress={()=>{onClick("Pizza"),{Category:""}}}>
+          <TouchableOpacity onPress={()=>{onClick("Pizza")}}>
             <Image
               style={styles.images}
               source={require("./../../assets/pizzas.jpeg")} />
@@ -114,10 +116,7 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <View>
-      {/* <FlatList
-      data={filteredList}
-      renderItem={Item}
-      /> */}
+    
       </View>
     </ScrollView>
 

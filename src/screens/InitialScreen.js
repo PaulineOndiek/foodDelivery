@@ -11,12 +11,12 @@ const InitialScreen=({navigation})=>{
             return(
                 
                 <View>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("Single Item", {id:orders})}}> 
+                   
                     <Text>{orders.Category}</Text>
                    <Image source={{uri:(orders.Image)}} style={{width: 60, height: 60}} />
                    <Text>{orders.Name}</Text>
                    <Text>{orders.Price}</Text>
-                   </TouchableOpacity>
+                   
                 </View>
             )
         })

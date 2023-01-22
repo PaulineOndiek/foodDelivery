@@ -1,28 +1,27 @@
 import { useEffect } from "react"
-import { View, Text, FlatList } from "react-native"
+import { View, Text, FlatList, TouchableOpacity} from "react-native"
 
 
-const CategoryScreen=({route})=>{
+const CategoryScreen=({navigation,route})=>{
     const { items }=route.params
-    useEffect(()=>{
-
-        console.log(items)
-    },[])
 
     return(
         <View>
-            {items.map((jj)=>{
+            {items.map((filtered)=>{
                 return(
                     <View>
-                  <Text>{ jj.Name}</Text> 
-                  <Text>{ jj.Category}</Text>
-                  </View>
+                         <TouchableOpacity onPress={()=>{navigation.navigate("Single Item", {id:filtered})}}> 
+                         <Text>{ filtered.Category}</Text>
+                        <Text>{ filtered.Name}</Text> 
+                       <Text>{filtered.Price}</Text>
+                       </TouchableOpacity>
+                    </View>
                 )
             })}
-{/* 
-            <FlatList 
+ 
+            {/* <FlatList 
             data={items}
-            renderItem={(item)=>{
+            renderItem={({item})=>{
                 return(
 
                     <Text>{item.Name}</Text>
