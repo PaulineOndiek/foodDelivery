@@ -1,23 +1,71 @@
-import { View, Image, Button, Text, StyleSheet, YellowBox} from "react-native"
+import { View, Image, Text, StyleSheet, TouchableOpacity,} from "react-native"
+// import { Header } from "react-native/Libraries/NewAppScreen"
+// import Heading from 
 const styles=StyleSheet.create({
 image:{
-    width:500,
-    height:500
+    width:200,
+    height:200,
+    padding:30,
+},
+images:{
+// flex:1,
+flexDirection:"row",
+justifyContent:"center"
 },
 container:{
-    backgroundColor:"#CC9200",
-}
+    
+    backgroundColor:"#52AC3C",
+
+    height:"100%",
+    // width:"80%",
+ 
+    
+},
+heading:{
+fontWeight:"bold",
+fontSize:40,
+// paddingLeft: 100,
+color:"white"
+},
+
+text:{
+    color:"white"
+},
+button:{
+    
+    width:300,
+    height:40,
+   top:100,
+   left:30,
+    borderRadius:10,
+    // borderWidth:2,
+    backgroundColor:"white",
+     
+},
+texts:{
+color:"#52AC3C",
+fontSize:25,
+left:30,
+},
+
 })
 const Welcome=({navigation})=>{
     return(
         <View style={styles.container}>
-             <Image source={{uri:"https://images.pexels.com/photos/4676401/pexels-photo-4676401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}} style={styles.image}/>
-             <Text>Welcome</Text> 
-            <Text> Have your favourite food delivered hot at your doorstep </Text>
-             <Button
-            title="Get Started"
-            onPress={()=>{navigation.navigate("Home")}} 
-            />
+            <View style={styles.images}>
+             <Image source={{uri:"https://images.pexels.com/photos/12842987/pexels-photo-12842987.jpeg?auto=compress&cs=tinysrgb&w=800"}} style={styles.image}/>
+             </View>
+
+             <Text style={styles.heading}>Fast Delivery at your Doorstep</Text> 
+            <Text style={styles.text}> Have your favourite food delivered hot at your doorstep </Text>
+             <TouchableOpacity
+              style={styles.button}
+             onPress={()=>{navigation.navigate("Home")}}
+             >
+                 <Text style={styles.texts}>Let's Explore</Text>  
+            
+             
+            </TouchableOpacity>
 
         </View>
     )

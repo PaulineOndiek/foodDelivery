@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Button, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, FlatList } from 'react-native';
+import { Button, View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, FlatList, ImageBackground} from 'react-native';
 import { Data } from '../Data';
 import {useState } from 'react';
 
-
+const image={uri:"https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=800"}
 const styles = StyleSheet.create({
   container: {
     flex:1,
@@ -22,7 +22,21 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-  }
+  },
+
+image:{
+  width:100,
+  height:100,
+  borderRadius:15,
+  flex:1,
+  flexDirection:"row",
+  justifyContent:"space-between",
+  // gap:5
+},
+text:{
+color:"white",
+paddingTop:40
+},
 })
 
 const HomeScreen = ({ navigation }) => {
@@ -107,7 +121,46 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
       </View>
+      <Text>Special Menu</Text>
+      <View style={styles.container}>
+        
+        <View>
+        <ImageBackground
+        resizeMode='cover'
+        style={styles.image}
+        source={image}>
+        <Text style={styles.text}>Fast Foods</Text>
+        </ImageBackground>
+        </View>
 
+        <View>
+        <Image 
+        style={styles.image}
+        source={require ("./../../assets/fish.jpeg")}/>
+        <Text style={styles.text}>Local Foods</Text>
+        </View>
+
+        <View>
+        <Image 
+        source={require("./../../assets/pizzas.jpeg")}
+        style={styles.image}
+        />
+        <Text style={styles.text}>Pizza</Text>
+        </View>      
+    
+      </View>
+      <View>
+        <Text>Popular Items</Text>
+        <Image/>
+        <Text>Name</Text>
+        <Text>Price</Text>
+
+        <Image/>
+        <Text></Text>
+        <Text></Text>
+
+        
+      </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('RegisterScreen')}
       >
@@ -115,9 +168,7 @@ const HomeScreen = ({ navigation }) => {
 
       </TouchableOpacity>
 
-      <View>
-    
-      </View>
+
     </ScrollView>
 
 

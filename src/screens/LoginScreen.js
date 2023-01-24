@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, TextInput, Button } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase"
+import { collection, getDocs } from "firebase/firestore"; 
 
 const LoginScreen = ({navigation}) => {
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
 // const auth = getAuth();
 
-const loginUser=()=>{
+const loginUser=async()=>{
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
@@ -20,7 +21,12 @@ const loginUser=()=>{
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-  });
+  })
+
+const querySnapshot = await getDocs(collection(db, "users"));
+querySnapshot.forEach((doc) => {
+  console.log(`${doc.id} => ${doc.data()}`);
+});
 }
 
   return (
