@@ -1,11 +1,16 @@
 import { View, Image, Text, TouchableOpacity, Button, StyleSheet} from "react-native"
 import { greaterThan } from "react-native-reanimated"
 import { Data } from "../Data"
+import { Context } from "../../Context/States"
+import { useContext } from "react"
 
 const styles=StyleSheet.create({
     container:{
         height:"100%",
-        // width:"80%",
+        width:"100%",
+        // justifyContent:"center",
+        marginTop:12,
+        marginLeft:50
         
 
      
@@ -36,15 +41,21 @@ image:{width:300,
 })
 const SingleItemScreen=({navigation,route})=>{
     const {id}=route.params
+    const {cartState}=useContext(Context)
+    const [cart, setCart]=cartState
+    const addToCart=(item)=>{
+     setCart([...cart,item])
+     console.log(cart)
+    }
     return(
         <View style={styles.container}>
             <Image 
             style={styles.image} source={{uri:(id.Image)}} />
             <Text style={styles.text}>{id.Name}</Text>
-            <Text style={styles.price}>Kshs. {id.Price}</Text>  
+            <Text style={styles.price}> {id.Price}</Text>  
             <Text>{id.aboutFood}</Text>  
             
-                <TouchableOpacity style={styles.button}> 
+                <TouchableOpacity style={styles.button} onPress={()=>{addToCart(id)}}> 
                     <Text style={styles.texts} >Shop Now</Text>
                 </TouchableOpacity>
                 

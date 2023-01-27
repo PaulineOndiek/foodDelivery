@@ -23,19 +23,20 @@ import InitialScreen from './src/screens/InitialScreen';
 import SingleItemScreen from './src/screens/SingleItemScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import CartScreen from './src/screens/CartScreen';
-import { States } from './Context/States';
+import States from './Context/States';
+// import { States } from './Context/States';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const Drawer=createDrawerNavigator()
+const Drawer = createDrawerNavigator()
 
 // <States>
 // <NavigationContainer>
 function MyStack() {
   return (
 
-    <Stack.Navigator initialRouteName='Home'>
-      
+    <Stack.Navigator initialRouteName='Welcome'>
+
       <Stack.Screen name="Home" component={DrawerNavigator} />
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
@@ -53,13 +54,13 @@ function MyStack() {
   )
 }
 
-function DrawerNavigator(){
+function DrawerNavigator() {
   // navigation.toggleDrawer();
-  return(
+  return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={HomeScreen}/>
-      <Drawer.Screen name="Register" component={RegisterScreen}/>
-      <Drawer.Screen name="Login" component={LoginScreen}/> 
+      <Drawer.Screen name="Homee" component={HomeScreen} />
+      <Drawer.Screen name="Register" component={RegisterScreen} />
+      <Drawer.Screen name="Login" component={LoginScreen} />
     </Drawer.Navigator>
   )
 }
@@ -67,14 +68,17 @@ function DrawerNavigator(){
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Homes" component={MyStack} />
-        <Tab.Screen name="Cart" component={CartScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
+    <States>
+      <NavigationContainer>
 
-    </NavigationContainer>
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
+          <Tab.Screen name="Homes" component={MyStack} />
+          <Tab.Screen name="Cart" component={CartScreen}/>
+          <Tab.Screen name="Profile" component={ProfileScreen} />
+        </Tab.Navigator>
+
+      </NavigationContainer>
+    </States>
   )
 }
 

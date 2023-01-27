@@ -4,6 +4,9 @@ import { Data } from '../Data';
 import {useState } from 'react';
 
 const image={uri:"https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=800"}
+const image1={uri:"https://images.pexels.com/photos/7000842/pexels-photo-7000842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}
+const image2={uri:"https://images.pexels.com/photos/845811/pexels-photo-845811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}
+
 const styles = StyleSheet.create({
   container: {
     flex:1,
@@ -134,18 +137,20 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
         <View>
-        <Image 
+        <ImageBackground
         style={styles.image}
-        source={require ("./../../assets/fish.jpeg")}/>
+        source={image1}>
         <Text style={styles.text}>Local Foods</Text>
+        </ImageBackground>
         </View>
 
         <View>
-        <Image 
-        source={require("./../../assets/pizzas.jpeg")}
+        <ImageBackground
+        source={image2}
         style={styles.image}
-        />
+        >
         <Text style={styles.text}>Pizza</Text>
+        </ImageBackground>
         </View>      
     
       </View>
@@ -162,7 +167,7 @@ const HomeScreen = ({ navigation }) => {
         
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('RegisterScreen')}
+        onPress={() => navigation.navigate('Register')}
       >
         <Text>Go to Register</Text>
 
