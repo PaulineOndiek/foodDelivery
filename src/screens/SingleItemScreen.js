@@ -8,7 +8,6 @@ const styles=StyleSheet.create({
     container:{
         height:"100%",
         width:"100%",
-        // justifyContent:"center",
         marginTop:12,
         marginLeft:50
         
@@ -67,3 +66,4 @@ const SingleItemScreen=({navigation,route})=>{
     )
 }
 export default SingleItemScreen
+//#FFCF23

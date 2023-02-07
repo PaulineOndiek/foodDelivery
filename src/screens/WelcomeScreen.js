@@ -1,14 +1,12 @@
 import { View, Image, Text, StyleSheet, TouchableOpacity,} from "react-native"
-// import { Header } from "react-native/Libraries/NewAppScreen"
-// import Heading from 
 const styles=StyleSheet.create({
 image:{
     width:200,
     height:200,
     padding:30,
+    borderRadius:70,
 },
 images:{
-// flex:1,
 flexDirection:"row",
 justifyContent:"center"
 },
@@ -17,14 +15,11 @@ container:{
     backgroundColor:"#52AC3C",
 
     height:"100%",
-    // width:"80%",
- 
     
 },
 heading:{
 fontWeight:"bold",
 fontSize:40,
-// paddingLeft: 100,
 color:"white"
 },
 

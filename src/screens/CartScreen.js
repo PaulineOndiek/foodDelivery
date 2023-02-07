@@ -24,16 +24,23 @@ const styles = StyleSheet.create({
 
 const CartScreen = () => {
   const { cartState } = useContext(Context)
-  const [cart, setcart] = cartState
+  const [cart, setCart] = cartState
   const [modifiedCart, setModifiedCart] = useState([])
-
+  const [remove, setRemove]=useState([])
+  
   useEffect(() => {
     setModifiedCart([...cart])
-    
+
   }, [cart])
 
-  const onSubtract = (itemid) => {
+  const onAdd = (item) => {
+    const findId = modifiedCart.find(cartProduct => item === cartProduct.id)
+    setModifiedCart([...modifiedCart, findId])
 
+  }
+  
+
+  const onSubtract = (itemid) => {
     let modifiedCartCopy = [...modifiedCart]
     let itemIndex;
     modifiedCartCopy.some(cartProduct => {
@@ -44,35 +51,15 @@ const CartScreen = () => {
     modifiedCartCopy.splice(itemIndex, 1)
     setModifiedCart(modifiedCartCopy)
 
-
-
   }
 
 
-
-
-  const onAdd = (item) => {
-    const findId = modifiedCart.find(cartProduct => item === cartProduct.id)
-    setModifiedCart([...modifiedCart, findId])
-
+    const removeItemFromBasket=(itemId)=>{
+      let newCart=[...cart]
+    let itemToBeDeleted =newCart.indexOf(itemId)
+        newCart.splice(itemToBeDeleted, 1)
+    setCart(newCart)  
   }
-
-
-
-
-  const updateProductPrice = (quantity, price) => {
-    let result = quantity * price
-
-
-  }
-
-  const counter = () => {
-
-  }
-
-  // const {item}=props
-  // const {quantity}=quantity
-
 
   return (
     <>
@@ -84,6 +71,7 @@ const CartScreen = () => {
               array.push(sameArray)
             }
           })
+
           const arrayLength = array.length
           const price = arrayLength * cartProduct.Price
 
@@ -99,10 +87,13 @@ const CartScreen = () => {
                     <Text>Add</Text>
                   </TouchableOpacity>
                   <Text>{arrayLength}</Text>
-                  <TouchableOpacity onPress={() => onSubtract(cartProduct.id)}>
+                  <TouchableOpacity  onPress={() => onSubtract(cartProduct.id)}>
                     <Text>Subtract</Text>
                   </TouchableOpacity>
-                  <Text></Text>
+
+                  <TouchableOpacity onPress={()=>removeItemFromBasket(cartProduct.id)}>
+                  <Text>Remove</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
               <Text>Total Quantity</Text>
@@ -110,11 +101,8 @@ const CartScreen = () => {
             </ScrollView>
           )
         })}
-
     </>
   )
 }
-
-
 
 export default CartScreen

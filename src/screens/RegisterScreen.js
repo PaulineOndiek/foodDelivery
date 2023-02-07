@@ -8,19 +8,12 @@ import { firebase } from "../config";
 import { firestore } from "../config";
 
 const RegisterScreen = ({ navigation }) => {
-  // const [userData, setUserData]=useState({
-  //   fullName:"",
-  //   email:"",
-  //   password:"",
-  //   phone:""
-  // })
   const [fullName,setFullName]=useState("")
   const [emailAddress, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [phone,setPhone]=useState("")
 
   const registerUser = async (email, password, phone, fullName) => {
-    // console.log(email, phone, fullName)
     await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -58,46 +51,6 @@ const RegisterScreen = ({ navigation }) => {
       });
   };
 
-  // const registerUser = async () => {
-
-  //   console.log("gcuyghgkj")
-  //   createUserWithEmailAndPassword(auth, email, password).then((credentials) => {
-  //     const user = credentials.user
-  //     console.log(user)
-  //   }).catch((error) => {
-  //     console.log(error)
-  //   })
-  //   // createUserWithEmailAndPassword(auth, email, password)
-  //   //   .then((userCredential) => {
-  //   //     // Signed in 
-  //   //     const user = userCredential.user;
-  //   //     console.log(user)
-
-  //   //     // ...
-  //   //     navigation.navigate('Login')
-  //   //   })
-  //   //   .catch((error) => {
-  //   //     console.log(error)
-  //   //   })
-
-  //   // .then
-  //   // try {
-  //   //   const docRef = await addDoc(collection(db, "users"), {
-  //   //    name:"",
-  //   //    email:"",
-  //   //    password:"",
-  //   //    phone:"",   
-  //   //   });
-  //   //   console.log("Document written with ID: ", docRef.id);
-  //   // } catch (e) {
-  //   //   console.error("Error adding document: ", e);
-  //   // }
-  //   // )
-
-  // }
-
-
-
   return (
 
     <View>
@@ -134,13 +87,6 @@ const RegisterScreen = ({ navigation }) => {
         <Text style={styles.texts}>Register</Text>
         {/* {navigation.navigate("Login")} */}
       </TouchableOpacity>
-
-
-      {/* <TouchableOpacity
-        onPress={() => navigation.navigate("Login")}
-        >
-           <Text>Login</Text>
-        </TouchableOpacity> */}
 
     </View>
   )

@@ -18,16 +18,6 @@ const CategoryScreen=({navigation,route})=>{
                     </View>
                 )
             })}
- 
-            {/* <FlatList 
-            data={items}
-            renderItem={({item})=>{
-                return(
-
-                    <Text>{item.Name}</Text>
-                )
-            }}
-            /> */}
     
         </View>
     )

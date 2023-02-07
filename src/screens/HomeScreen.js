@@ -13,13 +13,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: 'space-around'
-    // width:"100%",
   },
   category: {
     flex:1,
     justifyContent:"center",
-    // flexDirection: "column",
     alignItems: "center",
+  },
+  special:{
+    borderRadius:25,
+
   },
   images: {
     width: 100,
@@ -30,15 +32,28 @@ const styles = StyleSheet.create({
 image:{
   width:100,
   height:100,
-  borderRadius:15,
+ 
   flex:1,
   flexDirection:"row",
   justifyContent:"space-between",
   // gap:5
 },
+pizza:{
+width:100,
+height:100,
+
+},category:{
+flex:1,
+flexDirection:"row",
+
+},
+
 text:{
 color:"white",
-paddingTop:40
+paddingTop:40,
+paddingLeft:10,
+fontSize:15,
+fontWeight:"bold",
 },
 })
 
@@ -50,6 +65,7 @@ const HomeScreen = ({ navigation }) => {
     if (selectedCategory === "NONE") {
       return fullData
     }
+
   else{
     return fullData.filter(item => selectedCategory === item.Category)
   }
@@ -127,7 +143,7 @@ const HomeScreen = ({ navigation }) => {
       <Text>Special Menu</Text>
       <View style={styles.container}>
         
-        <View>
+        <View style={styles.special}>
         <ImageBackground
         resizeMode='cover'
         style={styles.image}
@@ -154,17 +170,30 @@ const HomeScreen = ({ navigation }) => {
         </View>      
     
       </View>
+ 
+      <View style={styles.category}>
+      <Text>Popular Items</Text>
       <View>
-        <Text>Popular Items</Text>
-        <Image/>
-        <Text>Name</Text>
-        <Text>Price</Text>
-
-        <Image/>
-        <Text></Text>
-        <Text></Text>
+       
+        <Image  style={styles.pizza} source={require("./../../assets/pepperoni.jpeg")}/>
+        <Text>Pepperoni Pizza</Text>
+        <Text>Kshs. 1,500</Text>
+        <Text>Add to Cart</Text>
+          </View>
+        <View>
+        <Image style={styles.pizza} source={require("./../../assets/chickenb.jpeg")} />
+        <Text>Chicken burrito </Text>
+        <Text>Kshs. 1250</Text>
+        <Text>Add to Cart</Text>
 
         
+      </View>
+      <View>
+        <Image style={styles.pizza}source={require("./../../assets/sandwich.jpeg")}/>
+        <Text>Sandwich</Text>
+        <Text>Kshs. 2,000</Text>
+        <Text>Add to Cart</Text>
+      </View>
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('Register')}
